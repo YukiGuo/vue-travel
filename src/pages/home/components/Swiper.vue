@@ -1,77 +1,61 @@
 <template>
-	<div class="slider">
-		<div class="slidershow">
-			<li v-for ='(item,index) of img'
-			>
-				<img :src=item class="sliderimg">
-			</li>
-		</div>
-		<div class="slide">
-			<span class="iconfont left">&#xe624;</span>
-			<span class="iconfont right">&#xe601;</span>
-		</div>
-		<div class="sliderbar">
-			<div class="dot" v-for= '(item,index) of img'></div>
-		</div>
+	<div class="wrapper">
+	  <swiper :options="swiperOption" >
+	    <swiper-slide v-for = '(item) of swiperList ' :key ='item.id'>
+	      <img class="swiper-img" 
+	      :src='item.imgurl'> 
+	    </swiper-slide>
+        <div class="swiper-pagination"  slot="pagination"></div>
+       </swiper>
 	</div>
-</template>
+</template> 
 <script >
 export default {
 	name: 'HomeSwiper',
-	data:function(){
+	data () {
 		return {
-		  img:[
-		  '/static/img/sliderimg01.jpg',
-		  '/static/img/sliderimg02.jpg',
-		  '/static/img/sliderimg03.jpg',
-		  '/static/img/sliderimg04.jpg',
-		  '/static/img/sliderimg05.jpg',
-		  ],
-	    }
-	},
-	methods:{
-       leftClick: function(){
-       }
+			swiperOption: {
+				pagination: '.swiper-pagination',
+				loop: true
+			},
+			swiperList: [
+			{
+				id: '001',
+				imgurl: 'http://img1.qunarzz.com/piao/fusion/1809/31/da037478f37cf202.jpg_750x200_a02cf862.jpg'
+			},
+			{
+				id: '002',
+				imgurl: 'http://img1.qunarzz.com/piao/fusion/1809/8e/9ef61cb5e88b1302.jpg_750x200_31a50677.jpg'
+			},
+			{
+				id: '003',
+				imgurl: 'http://img1.qunarzz.com/piao/fusion/1809/82/c94c9a77de17f902.jpg_750x200_a8419488.jpg'
+			},
+			{
+				id: '004',
+				imgurl: 'http://img1.qunarzz.com/piao/fusion/1809/c6/2467595fffc3b302.jpg_750x200_cca13d51.jpg'
+			},
+			{
+				id: '005',
+				imgurl: 'http://img1.qunarzz.com/piao/fusion/1809/83/a77595fb02eed602.jpg_750x200_1627b072.jpg'
+			}
+			]
+		}
 	}
-}
-setInterval(function(){
-	console.log("hello");
-},3000)
+}	
 </script>
 <style lang="stylus" scoped>
-  li
-    list-style:none
-  .slider
-    position:relative
-    .slidershow
-      overflow: hidden
-      width:100%
-      height:0
-      padding-bottom: 25.67%
-      .sliderimg
-        width:100%
-  .slide
-    .left,.right
-      position:absolute
-      top:35px
-      width:30px
-      height:30px
-      background-color:#ccc
-      border-radius:50%
-      opacity:0.5
-      line-height:30px
-      
-    .left
-      left:0
-    .right
-      right:0            
-  .sliderbar
-    .dot
-      display:inline-block
-      margin-right: 0.2rem
-      width:0.15rem
-      height:0.15rem
-      border: solid 1px #ccc
-      border-radius:50%
-      background-color:#fff
+.wrapper>>> .swiper-pagination-bullet-active
+    background-color:#fff !important
+.wrapper
+    width:100%
+    height:0
+    overflow:hidden
+    padding-bottom:26.5%
+    background-color : #ccc
+    .swiper-img
+      width: 100%
+  .swiper-img
+     width:100% 
+   
 </style>

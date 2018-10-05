@@ -2,6 +2,7 @@
     <div>
      <home-head></home-head>
      <home-swiper></home-swiper>
+     <div>哈哈哈</div>
     </div>
 </template>
 <script>
