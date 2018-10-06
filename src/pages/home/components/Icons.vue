@@ -113,7 +113,4 @@ export default {
           text-align:center
           line-height:.44rem
           ellipsis ()
-          overflow:hidden
-          white-space:nowrap
-          text-overflow:ellipsis
 </style>
