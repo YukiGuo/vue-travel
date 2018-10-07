@@ -1,6 +1,6 @@
 <template>
 	<div class="icons">
-		<swiper>
+		<swiper :options="swiperOption">
 			<swiper-slide v-for="(page,index) of pages" :key="index">
 				<div class="icon" v-for="item of page">
 				    <div class="icon-img">
@@ -15,57 +15,16 @@
 <script >
 export default {
 	name:'HomeIcons',
-	data () {
-        return{
-          iconsList:[
-         	  {
-        		id:'001',
-        		imgurl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-        		desc:'景点门票'
-        	  },
-              {
-            	id:'002',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-            	desc:'一日游'
-              },
-              {
-            	id:'003',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-            	desc:'上海必游一样一样'
-              },
-              {
-            	id:'004',
-            	imgurl:'https://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-            	desc:'网红top榜'
-              },
-              {
-            	id:'005',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-            	desc:'赏秋色'
-              },
-              {
-            	id:'006',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1805/57/1e29afd06f881102.png',
-            	desc:'普陀山'
-              },
-              {
-            	id:'007',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-            	desc:'上海必游'
-              },
-              {
-            	id:'008',
-            	imgurl:'https://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-            	desc:'网红top榜'
-              },
-              {
-            	id:'009',
-            	imgurl:'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-            	desc:'赏秋色'
-              },  
-            ]
-        }
-	},    
+  props:{
+    iconsList: Array
+  },
+data () {
+    return {
+      swiperOption: {
+       autoplay:false
+      },
+    }
+  },    
 	computed:{
 		pages () {
 			const pages =[]

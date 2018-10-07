@@ -16,32 +16,8 @@
 <script >
 export default {
     name:'HomeRecommend',
-    data () {
-    	return {
-    	  recommendList:[
-    	   {
-    		id:'001',
-    		imgurl:'http://img1.qunarzz.com/sight/p0/1704/c9/c936f3fccfc6d7eda3.img.jpg_200x200_46052773.jpg',
-    		name:'上海杜莎夫人蜡像馆',
-    		comment:'20293条评论',
-    		price:'130元'      
-    	  },
-    	    {
-    		id:'002',
-    		imgurl:'http://img1.qunarzz.com/sight/p0/1609/80/8092254b7f5f016ea3.water.jpg_200x200_cd798d39.jpg',
-    		name:'上海欢乐谷',
-    		comment:'31254条评论',
-    		price:'99元'      
-    	  },
-    	   {
-    		id:'003',
-    		imgurl:'http://img1.qunarzz.com/sight/p0/1607/7c/7cda8b6782dabd80b4.img.jpg_200x200_2039e660.jpg',
-    		name:'上海迪士尼乐园',
-    		comment:'198097条评论',
-    		price:'300元'      
-    	  }
-    	  ]
-    	}  
+    props:{
+      recommendList:Array
     }
 } 
 

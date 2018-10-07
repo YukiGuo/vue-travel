@@ -14,30 +14,9 @@
 <script >
 export default {
 	name:"HomeWeekend",
-	data (){
-		return {
-			weekendList:[
-			{
-				id:'001',
-                imgurl:'http://img1.qunarzz.com/sight/source/1603/ad/69b0fc5f48ad5f.jpg_r_640x214_b0fd5c7b.jpg' ,
-                name:'亲子时光TOP10',
-                desc:'中西合璧，现代和传统各有各的精彩'  
-			},
-            {
-				id:'002',
-                imgurl:'http://img1.qunarzz.com/sight/source/1505/7d/df6ff468331c43.jpg_r_640x214_1f3783d0.jpg' ,
-                name:'上海必游TOP10',
-                desc:'走进自然或玩转乐园，感知大千世界'  
-			},
-			  {
-				id:'003',
-                imgurl:'http://img1.qunarzz.com/sight/source/1511/1d/fe098e8cfec117.jpg_r_640x214_a9be292a.jpg' ,
-                name:'上海城市风光',
-                desc:'来这里寻找你所认识的上海'  
-			},
-			]
-		}
-	}
+  props:{
+      weekendList:Array
+  }
 }
 </script>
 <style lang="stylus" scoped>

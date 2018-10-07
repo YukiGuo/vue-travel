@@ -8,14 +8,17 @@
 	    	输入城市/景点/游玩等主题
 	    </div>
 	    <div class="headright"> 
-	    城市
+	    {{this.city}}
 	    <span class="iconfont">&#xe6aa;</span>
 	    </div>
 	</div>
 </template>
 <script>
 export default {
-	name: 'HomeHead'
+	name: 'HomeHead',
+  props: {
+    city: String
+  }
 }
 </script>
 
