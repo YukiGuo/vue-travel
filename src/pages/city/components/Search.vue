@@ -6,7 +6,11 @@
      ref = "content"
   >
     <ul>
-      <li class="item border-bottom" v-for = "item of list" :key ="item.id">
+      <li class="item border-bottom"
+       v-for = "item of list" 
+       :key ="item.id"
+       @click ="handleClick(item.name)"
+      >
         {{item.name}}
       </li>
       <li v-show = "listShow">没有找到匹配数据</li>
@@ -16,6 +20,7 @@
 </template>
 <script >
 import BScroll from 'better-scroll'
+import{mapMutations} from'vuex'
 export default { 
       name:'CitySearch',
       props:{
@@ -27,6 +32,14 @@ export default {
           timer:null,
           list:[]
         }
+      },
+      methods :{
+        handleClick (city ){
+          // this.$store.dispatch('change',city)
+          this.change(city)
+          this.$router.push('/')
+        },
+        ...mapMutations(['change'])
       },
       watch: {
         keyname () {

@@ -6,7 +6,7 @@
         <div class="button-list">
           <div class="button-wrapper">
              <div class="button">
-               北京
+               {{this.currentCity}}
              </div>
           </div>
         </div>
@@ -14,7 +14,11 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
           <div class="button-list">
-            <div class="button-wrapper" v-for ="item of hot" :key ="item.id">
+            <div class="button-wrapper" 
+              v-for ="item of hot" 
+              :key ="item.id"
+              @click ="handleClick(item.name)"
+            >
                <div class="button">{{item.name}}</div>
             </div>                                        
           </div>
@@ -23,7 +27,9 @@
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom"
-              v-for = "innerItem of item" :key ="innerItem.id"
+            v-for = "innerItem of item" 
+            :key ="innerItem.id"
+            @click ="handleClick(innerItem.name)"
           >{{innerItem.name}}</div>
         </div>
       </div>
@@ -32,6 +38,7 @@
 </template>
 <script >
 import BScroll from 'better-scroll'
+import {mapState,mapMutations} from 'vuex'
   export default { 
       name:'CityList',
       props:{
@@ -42,14 +49,28 @@ import BScroll from 'better-scroll'
       mounted (){
         this.scroll = new BScroll(this.$refs.wrapper)
       },
+      methods :{
+        handleClick (city ){
+          // this.$store.dispatch('change',city)
+          this.change(city)
+          this.$router.push('/')   
+        },
+        ...mapMutations(['change'])
+      },
       watch: { 
         letter () {
             if (this.letter){
               const element = this.$refs[this.letter][0]
               this.scroll.scrollToElement(element)
             }
-          }  
-      }
+          }
+        },
+      computed :{
+        ...mapState ({
+           currentCity:'city'
+        })
+      }     
+      
 	}
 </script>
 
