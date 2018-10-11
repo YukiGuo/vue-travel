@@ -9,6 +9,7 @@
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 import HomeHead from './components/Head.vue'
 import HomeSwiper from './components/Swiper.vue'
 import HomeIcons from './components/Icons.vue'
@@ -26,15 +27,19 @@ export default {
   },
   data () {
     return {
+        lastCity:'',
         swiperList:[],
         iconsList:[],
         recommendList:[],
         weekendList:[]
     }
   },
+  computed :{
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo (){
-        axios.get('/static/mock/index.json').then(this.getHomeInfoSucc)
+        axios.get('/static/mock/index.json?city='+this.city).then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res){
        console.log(res)
@@ -50,8 +55,17 @@ export default {
         } 
     },
   } ,
-  mounted (){
+  mounted () {
+    this.lastCity = this.city
     this.getHomeInfo()
+    console.log('moubted')
+  },
+  activated () {
+    if (this.lastCity !== this.city){
+      this.city = this.lastCity
+      this.getHomeInfo()
+    }
+    console.log('activated')
   }
 }
 </script>
