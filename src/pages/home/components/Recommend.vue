@@ -2,14 +2,19 @@
 	<div class="wrapper">
 		<p class="title">热销推荐</p>
 		<ul>
-			<li class="item border-bottom" v-for = "item of recommendList" :key ="item.id">
+      
+			<router-link 
+      tag ='li'
+      :to ="'/detail/' + item.id"
+      class="item border-bottom" 
+      v-for = "item of recommendList" :key ="item.id">
 				<img class="img-content" :src="item.imgurl">
 				<div class="info">
 					<p class="info-name">{{item.name}}</p>
 		            <p class="info-comment"><span class="iconfont">&#xe626;&#xe626;&#xe626;&#xe626;&#xe626;</span>{{item.comment}}</p> 
 		            <p class="info-price"><span>￥<em>{{item.price}}</em></span> 起</p>
 				</div>
-			</li>
+    </router-link>
 		</ul>
 	</div>
 </template>
