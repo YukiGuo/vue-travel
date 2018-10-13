@@ -43,9 +43,12 @@
               }   
             }
 		},
-		activated (){
+		activated () {
 			window.addEventListener('scroll',this.handleScroll)
-		}
+		},
+    deacvivated () {
+            window.addEventListener('scroll',this.handleScroll)
+    }
 	}
 </script>
 <style lang='stylus' scoped>
