@@ -3,10 +3,10 @@
   <div>
   	<div class="banner">
   		<div class="img-wrapper" @click="handleClick">
-  			<img class="img-content"src ='//img1.qunarzz.com/sight/p0/1704/c9/c936f3fccfc6d7eda3.img.jpg_600x330_1be7ea5e.jpg'>
+  			<img class="img-content":src ="bannerImg">
   			<div class="img-info">
-  			   <div class="img-title">上海杜莎夫人蜡像馆（AAAA景区）</div> 
-                 <div class="img-num"><span class="iconfont ">&#xe648;39</span></div>
+  			   <div class="img-title">{{this.sightName}}（AAAA景区）</div> 
+                 <div class="img-num"><span class="iconfont ">&#xe648;&nbsp;&nbsp;&nbsp;{{this.gallaryImgs.length}}</span></div>
               </div> 
   		</div>
   		<div class="desc">
@@ -31,7 +31,7 @@
   		</div>
   	</div>
     <common-gallary 
-      :imgs = "imgs" 
+      :imgs = "gallaryImgs" 
       v-show= "showGallary"
       @close ="closePic"
     ></common-gallary>
@@ -41,11 +41,13 @@
 import CommonGallary from'common/gallary/Gallary.vue'
 	export default {
 		name:'DetailBanner',
+    props:{
+           sightName:String,
+           bannerImg:String,
+           gallaryImgs:Array
+    },
     data () {
       return {
-        imgs:['http://img1.qunarzz.com/sight/p0/1704/15/15946c69f4656252a3.img.jpg_r_800x800_cfd81670.jpg',
-        'http://img1.qunarzz.com/sight/p0/1704/74/74a3ba6334dd7cfa3.img.jpg_r_800x800_c2612186.jpg','http://img1.qunarzz.com/sight/p0/1704/75/75ad53b154f9cfada3.img.jpg_r_800x800_444c144d.jpg',
-        'http://img1.qunarzz.com/sight/p0/1704/cb/cb65bbaf8f885edda3.img.jpg_r_800x800_634c8e83.jpg'],
         showGallary :false
       }
     },
@@ -64,6 +66,7 @@ import CommonGallary from'common/gallary/Gallary.vue'
 </script>
 <style lang="stylus" scoped >
 @import "~style/varibles.styl"
+@import "~style/mixins.styl"
   .banner
     width:100%
     .img-wrapper
@@ -88,6 +91,7 @@ import CommonGallary from'common/gallary/Gallary.vue'
         flex:1
         font-size:.32rem
         line-height:.68rem
+        ellipsis()
       .img-num
         padding:0 .4rem
         margin-top:.16rem

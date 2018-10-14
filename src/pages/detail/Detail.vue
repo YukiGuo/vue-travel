@@ -1,12 +1,13 @@
 <template>
 	<div>
 		<detail-head></detail-head>
-        <detail-banner           :sightName ="sightName"></detail-banner>
+        <detail-banner   
+          :sightName ="sightName"
+          :bannerImg = "bannerImg"
+          :gallaryImgs ="gallaryImgs"
+         ></detail-banner>
         <detail-list 
           :list ="list"
-
-          :bannerImg = "bannerImg"
-          :galleryImgs ="gallaryImgs"
         ></detail-list>
         <div  class="content"></div>
 </div>
@@ -28,14 +29,14 @@ import axios from'axios'
                list:[],
                sightName:'',
                bannerImg:'',
-               gallaryImgs:''
+               gallaryImgs:[]
              }
 		},
 		methods : {
 			getHomeInfo () {
 				axios.get('/static/mock/detail.json',{
 					params:{
-						id:this.params.id
+						id:this.$route.params.id
 					}
 				}).then(this.getHomeInfoSucc)
 			},
@@ -44,7 +45,7 @@ import axios from'axios'
 		       this.sightName =	res.data.data.sightName
 		       this.list =res.data.data.categoryList
 		       this.bannerImg =res.data.data.bannerImg
-		       this.gallaryImg=res.data.data.sgallaryImgs
+		       this.gallaryImgs=res.data.data.gallaryImgs
 		       console.log(this.list)
 		   }
 		    }	
