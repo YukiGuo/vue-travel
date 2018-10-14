@@ -65,7 +65,6 @@ import CommonGallary from'common/gallary/Gallary.vue'
 <style lang="stylus" scoped >
 @import "~style/varibles.styl"
   .banner
-    height:500px
     width:100%
     .img-wrapper
       width:100%
